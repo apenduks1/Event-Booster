@@ -1,5 +1,5 @@
-@import './_colors.scss';
-@import './_footer.scss';
+@import './utils/colors';
+@import './components/footer';
 
 ul {
   list-style-type: none;
