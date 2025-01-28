@@ -1,1 +1,15 @@
+
 @import './utils/_colors.scss', './utils/_general.scss', './componets_main/header.scss';
+
+@import './utils/colors';
+@import './components/footer';
+
+ul {
+  list-style-type: none;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
