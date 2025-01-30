@@ -1,11 +1,10 @@
 .main {
-  font-family: var(--font-family);
+  font-family: $--font-family;
   background-color: $black;
   width: auto;
   height: auto;
 
   &__img {
-
     @media (min-width: 320px) {
       border-radius: 50px 0;
       width: 128px;
@@ -16,6 +15,33 @@
       border-radius: 50px 0;
       width: 180px;
       height: 227px;
+    }
+  }
+
+  &__image {
+    position: relative;
+  }
+
+  &__img_border {
+    position: absolute;
+
+    @media (min-width: 320px) {
+      border: 1px solid rgba(220, 86, 197, 0.3);
+      border-radius: 50px 0;
+      width: 108px;
+      height: 101px;
+      top: -9px;
+      left: 31px;
+
+    }
+
+    @media (min-width: 768px) {
+      border: 1px solid rgba(220, 86, 197, 0.3);
+      border-radius: 50px 0;
+      width: 153px;
+      height: 143px;
+      top: -13px;
+      left: 42px;
     }
   }
 
@@ -71,15 +97,15 @@
   &__card {
     @media (min-width: 320px) {
       width: 138px;
-      height: 231px;
+      height: auto;
       margin-top: 41px;
     }
 
     @media (min-width: 768px) {
       width: 196px;
-      height: 312px;
       margin-top: 45px;
     }
+
     @media (min-width: 1024px) {
       margin-top: 50px;
     }
@@ -96,7 +122,6 @@
   }
 
   &__cards {
-
     @media (min-width: 320px) {
       display: flex;
       flex-wrap: wrap;
