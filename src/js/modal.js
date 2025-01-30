@@ -1,30 +1,29 @@
 import modalTemplate from '../templates/modal.hbs';
 
-// document.querySelector('.button[data-action="open-modal"]').addEventListener('click', () => {
-//   const backdrop = document.querySelector('.backdrop');
-//   backdrop.classList.add('is-visible');
-//   const modal = backdrop.querySelector('.modal');
-//   modal.classList.add('is-visible');
-// });
+document.addEventListener('DOMContentLoaded', function(){
+  const openModalBtn = document.querySelector('button[data-action="open-modal"]');
+  const closeModalBtn = document.querySelector('.modal__close');
+  const backDrop = document.querySelector('.js-backdrop');
 
-// document.querySelector('.backdrop').addEventListener('click', (event) => {
-//   if (event.target !== event.currentTarget) return;
-//   closeModal();
-// });
-//
-// function closeModal() {
-//   const backdrop = document.querySelector('.backdrop');
-//   const modal = backdrop.querySelector('.modal');
-//   modal.classList.remove('is-visible');
-//   setTimeout(() => {
-//     backdrop.classList.remove('is-visible');
-//   }, 300);
-// }
+  openModalBtn.addEventListener('click', function(){
+    backDrop.classList.add('is-open');
+  });
 
+  closeModalBtn.addEventListener('click', function(){
+    backDrop.classList.remove('is-open');
+  });
+
+  backDrop.addEventListener('click', function(event){
+    if (event.target === backDrop) {
+      backDrop.classList.remove('is-open');
+    }
+  })
+})
 
 let source = document.getElementById("content");
 
 let context = {
+  closeImg: "./images/modal-images/close.svg",
   smallImg: "./images/modal-images/modal-small-svg.svg",
   bigImg: "./images/modal-images/modal-big-photo.png",
   info: "Atlas Weekend is the largest music festival in Ukraine.More than 200 artists will create a proper music festival atmosphere on 10 stages.",
