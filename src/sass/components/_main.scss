@@ -5,6 +5,7 @@
   height: auto;
 
   &__img {
+    object-fit: cover;
     @media (min-width: 320px) {
       border-radius: 50px 0;
       width: 128px;

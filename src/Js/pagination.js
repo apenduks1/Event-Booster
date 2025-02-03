@@ -1,32 +1,41 @@
+import cardTemplate from '../template/card.hbs'
 const limitEvents = 20
-let page = 1
+let page = 1 
 
-const getEvents = async () => {
-    const queryParams = new URLSearchParams({
+const mainCards = document.querySelector('.main__cards')
+
+
+const queryParams = new URLSearchParams({
         apikey: 'Pih5LiNOpgXEI3dv2AQLDYBKjwzglj8d',
         size: limitEvents,
         page: page
-    })
+})
+    
+const getEvents = async () => {
+    
     console.log(queryParams.toString());
     const response = await fetch(`https://app.ticketmaster.com/discovery/v2/events/?${queryParams.toString()}`)
-    const events = await response.json()
+    const event = await response.json()
 
-    console.log(events);
+    console.log(event);
+    return event
+    
 }
-
 getEvents()
 
 const tenderEvents = async () => {
     const responseEvents = await getEvents()
     const events = responseEvents._embedded.events
     events.forEach((value) => {
+        console.log(value);
         const event = {
             title: value.name,
-            images: value.images[0].URLSearchParams,
-            date: value.dates,
-            location : value.locale
+            image: value.images[0].url,
+            date: value.dates.start.localDate,
+            location: value._embedded.venues[0].name
         }
 
-        container.innerHTML = menuTemplate(event)
+        mainCards.insertAdjacentHTML("beforeend", cardTemplate(event)) 
     })
 }
+tenderEvents()
