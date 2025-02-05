@@ -1,1 +1,19 @@
+<<<<<<< HEAD
 @import './utils/_colors.scss', './utils/_general.scss', './componets/header.scss';
+=======
+
+@import './utils/_colors.scss', './utils/_general.scss', './componets_main/header.scss';
+
+@import './utils/colors';
+@import './components/footer';
+
+ul {
+  list-style-type: none;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+>>>>>>> 404faf3184ead09ff30342bac81ca657ccd414e6
