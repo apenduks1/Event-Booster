@@ -1,0 +1,142 @@
+.main {
+  font-family: $--font-family;
+  background-color: $black;
+  width: auto;
+  height: auto;
+
+  &__img {
+    object-fit: cover;
+    @media (min-width: 320px) {
+      border-radius: 50px 0;
+      width: 128px;
+      height: 161px;
+    }
+
+    @media (min-width: 768px) {
+      border-radius: 50px 0;
+      width: 180px;
+      height: 227px;
+    }
+  }
+
+  &__image {
+    position: relative;
+  }
+
+  &__img_border {
+    position: absolute;
+
+    @media (min-width: 320px) {
+      border: 1px solid rgba(220, 86, 197, 0.3);
+      border-radius: 50px 0;
+      width: 108px;
+      height: 101px;
+      top: -9px;
+      left: 31px;
+
+    }
+
+    @media (min-width: 768px) {
+      border: 1px solid rgba(220, 86, 197, 0.3);
+      border-radius: 50px 0;
+      width: 153px;
+      height: 143px;
+      top: -13px;
+      left: 42px;
+    }
+  }
+
+  &__title {
+    @media (min-width: 320px) {
+      font-weight: 700;
+      font-size: 14px;
+      text-align: center;
+      color: $main_text;
+      margin-top: 5px;
+    }
+
+    @media (min-width: 768px) {
+      font-weight: 700;
+      font-size: 16px;
+      text-align: center;
+      color: $main_text;
+    }
+  }
+
+  &__date {
+    @media (min-width: 320px) {
+      font-weight: 400;
+      font-size: 14px;
+      text-align: center;
+      color: $white;
+      margin-top: 5px;
+    }
+
+    @media (min-width: 768px) {
+      font-weight: 400;
+      font-size: 16px;
+      text-align: center;
+      color: $white;
+    }
+  }
+
+  &__location {
+    @media (min-width: 320px) {
+      font-weight: 600;
+      font-size: 12px;
+      color: $white;
+    }
+
+    @media (min-width: 768px) {
+      font-weight: 600;
+      font-size: 14px;
+      text-align: center;
+      color: $white;
+    }
+  }
+
+  &__card {
+    @media (min-width: 320px) {
+      width: 138px;
+      height: auto;
+      margin-top: 41px;
+    }
+
+    @media (min-width: 768px) {
+      width: 196px;
+      margin-top: 45px;
+    }
+
+    @media (min-width: 1024px) {
+      margin-top: 50px;
+    }
+
+  }
+
+  &__locations {
+    @media (min-width: 320px) {
+      display: flex;
+      gap: 3px;
+      justify-content: center;
+      margin-top: 5px;
+    }
+  }
+
+  &__cards {
+    @media (min-width: 320px) {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 4px;
+    }
+
+    @media (min-width: 768px) {
+      gap: 13px;
+    }
+
+    @media (min-width: 1024px) {
+      gap: 56px;
+    }
+  }
+}
