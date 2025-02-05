@@ -1,0 +1,62 @@
+.js-backdrop {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  backdrop-filter: blur(3px);
+  background: rgba(32, 13, 29, 0.6);
+}
+
+.js-backdrop.is-open {
+  display: block;
+}
+
+.modal {
+  position: relative;
+  margin: auto;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #fff2fd;
+  border-radius: 300px 0;
+  padding: 20px;
+  max-width: 80%;
+  z-index: 11000;
+  width: 840px;
+  height: 920px;
+}
+
+.modal__list {
+  width: 450px;
+  height: 85px;
+}
+
+.big-photo {
+  width: 360px;
+  height: 641px;
+
+  & img {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.small-photo {
+  width: 132px;
+  height: 132px;
+  margin: 0 auto;
+
+  & img {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+
+
+.box {
+  display: flex;
+  justify-content: space-between;
+}

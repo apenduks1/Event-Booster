@@ -1,14 +1,6 @@
 @import './utils/_colors.scss', './utils/_general.scss';
 @import  "./components/_header";
 @import './components/_footer';
-
-ul {
-  list-style-type: none;
-}
-
-body {
-  margin: 0;
-  padding: 0;
-}
+@import "./components/modal";
 
 
