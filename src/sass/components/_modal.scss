@@ -33,6 +33,7 @@
   height: 85px;
 }
 
+
 .big-photo {
   width: 360px;
   height: 641px;
@@ -54,7 +55,16 @@
   }
 }
 
+.modal__title {
+  font-family: "Montserrat", sans-serif;
+  color: $main_text;
+  font-weight: 600;
+  font-size: 24px;
+}
 
+.modal__subtitle {
+  font-family: "Montserrat", sans-serif;
+}
 
 .box {
   display: flex;
