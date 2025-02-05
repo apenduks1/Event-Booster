@@ -1,5 +1,45 @@
 import cardTemplate from '../template/card.hbs'
-const limitEvents = 20
+footerBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+        footerBtns.forEach(button => {
+            button.classList.remove("footer__btn--piced");
+            button.disabled = false;
+
+        });
+        btn.classList.add("footer__btn--piced");
+    
+        
+        if( +btn.textContent === 29){
+            
+        }else if(+btn.textContent === 1){
+
+        }
+        else if(+btn.textContent > 25){
+            btn.disabled = true;
+            btn.parentElement.nextElementSibling.classList.remove("footer__item--unvisible")
+            btn.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.classList.add("footer__item--unvisible")
+          
+        }
+        else if(+btn.textContent > 4){
+            btn.disabled = true;
+            btn.parentElement.nextElementSibling.classList.remove("footer__item--unvisible")
+            btn.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.classList.add("footer__item--unvisible")
+            btn.parentElement.previousElementSibling.classList.remove("footer__item--unvisible")
+            btn.parentElement.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.classList.add("footer__item--unvisible")
+        }
+        
+         else{
+            btn.disabled = true;
+            btn.parentElement.previousElementSibling.classList.remove("footer__item--unvisible")
+            btn.parentElement.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.classList.add("footer__item--unvisible")
+        }
+
+    });
+});
+const footerBtnPiced = document.querySelector(".footer__btn--piced")
+
+const limitEvents = 580
+const limitEventsPerPage = 20 
 let page = 1 
 
 const mainCards = document.querySelector('.main__cards')
@@ -7,7 +47,7 @@ const mainCards = document.querySelector('.main__cards')
 
 const queryParams = new URLSearchParams({
         apikey: 'Pih5LiNOpgXEI3dv2AQLDYBKjwzglj8d',
-        size: limitEvents,
+        size: 20,
         page: page
 })
     
@@ -39,3 +79,6 @@ const tenderEvents = async () => {
     })
 }
 tenderEvents()
+
+const footerBtns = document.querySelectorAll(".footer__btn");
+
