@@ -41,3 +41,4 @@ let context = {
 let html = modalTemplate(context);
 console.log(html);
 document.getElementById("content").innerHTML = html;
+ 
