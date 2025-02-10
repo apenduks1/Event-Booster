@@ -1,84 +1,110 @@
-import cardTemplate from '../template/card.hbs'
-footerBtns.forEach(btn => {
-    btn.addEventListener("click", () => {
-        footerBtns.forEach(button => {
-            button.classList.remove("footer__btn--piced");
-            button.disabled = false;
+import cardTemplate from '../template/card.hbs';
 
+const limitEventsPerPage = 20;
+let currentPage = 1;
+const totalPages = 29;
+
+const mainCards = document.querySelector('.main__cards');
+const paginationContainer = document.querySelector('.footer__list');
+
+const createPaginationItem = (number, isEllipsis = false) => {
+    const li = document.createElement('li');
+    li.className = 'footer__item';
+    
+    if (isEllipsis) {
+        li.innerHTML = '<span class="footer__ellipsis">...</span>';
+    } else {
+        const button = document.createElement('button');
+        button.className = 'footer__btn';
+        button.textContent = number;
+        if (number === currentPage) {
+            button.classList.add('footer__btn--piced');
+            button.disabled = true;
+        }
+        button.addEventListener('click', async () => {
+            currentPage = number;
+            await renderEvents(currentPage);
+            updatePagination();
         });
-        btn.classList.add("footer__btn--piced");
+        li.appendChild(button);
+    }
+    return li;
+};
+
+const updatePagination = () => {
+    paginationContainer.innerHTML = '';
     
-        
-        if( +btn.textContent === 29){
-            
-        }else if(+btn.textContent === 1){
 
-        }
-        else if(+btn.textContent > 25){
-            btn.disabled = true;
-            btn.parentElement.nextElementSibling.classList.remove("footer__item--unvisible")
-            btn.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.classList.add("footer__item--unvisible")
-          
-        }
-        else if(+btn.textContent > 4){
-            btn.disabled = true;
-            btn.parentElement.nextElementSibling.classList.remove("footer__item--unvisible")
-            btn.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.classList.add("footer__item--unvisible")
-            btn.parentElement.previousElementSibling.classList.remove("footer__item--unvisible")
-            btn.parentElement.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.classList.add("footer__item--unvisible")
-        }
-        
-         else{
-            btn.disabled = true;
-            btn.parentElement.previousElementSibling.classList.remove("footer__item--unvisible")
-            btn.parentElement.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.classList.add("footer__item--unvisible")
-        }
+    const start = Math.max(1, currentPage - 2);
+    const end = Math.min(currentPage + 2, totalPages);
 
-    });
-});
-const footerBtnPiced = document.querySelector(".footer__btn--piced")
+    for (let i = start; i <= end; i++) {
+        paginationContainer.appendChild(createPaginationItem(i));
+    }
 
-const limitEvents = 580
-const limitEventsPerPage = 20 
-let page = 1 
+    if (currentPage < totalPages - 2) {
+        paginationContainer.appendChild(createPaginationItem(null, true));
+        paginationContainer.appendChild(createPaginationItem(totalPages));
+    }
 
-const mainCards = document.querySelector('.main__cards')
-
-
-const queryParams = new URLSearchParams({
-        apikey: 'Pih5LiNOpgXEI3dv2AQLDYBKjwzglj8d',
-        size: 20,
-        page: page
-})
+    const prevButton = document.querySelector('.footer__prev');
+    const nextButton = document.querySelector('.footer__next');
     
-const getEvents = async () => {
+    if (prevButton) {
+        prevButton.disabled = currentPage === 1;
+        prevButton.onclick = async () => {
+            if (currentPage > 1) {
+                currentPage--;
+                await renderEvents(currentPage);
+                updatePagination();
+            }
+        };
+    }
     
-    console.log(queryParams.toString());
-    const response = await fetch(`https://app.ticketmaster.com/discovery/v2/events/?${queryParams.toString()}`)
-    const event = await response.json()
+    if (nextButton) {
+        nextButton.disabled = currentPage === totalPages;
+        nextButton.onclick = async () => {
+            if (currentPage < totalPages) {
+                currentPage++;
+                await renderEvents(currentPage);
+                updatePagination();
+            }
+        };
+    }
+};
 
-    console.log(event);
-    return event
-    
-}
-getEvents()
+const renderEvents = async (page) => {
+    mainCards.innerHTML = '';
+    const responseEvents = await getEvents(page);
+    if (!responseEvents?._embedded?.events) return;
 
-const tenderEvents = async () => {
-    const responseEvents = await getEvents()
-    const events = responseEvents._embedded.events
-    events.forEach((value) => {
-        console.log(value);
+    responseEvents._embedded.events.forEach((value) => {
         const event = {
             title: value.name,
             image: value.images[0].url,
             date: value.dates.start.localDate,
             location: value._embedded.venues[0].name
-        }
+        };
+        mainCards.insertAdjacentHTML("beforeend", cardTemplate(event));
+    });
+};
 
-        mainCards.insertAdjacentHTML("beforeend", cardTemplate(event)) 
-    })
-}
-tenderEvents()
+const getEvents = async (page) => {
+    const queryParams = new URLSearchParams({
+        apikey: 'Pih5LiNOpgXEI3dv2AQLDYBKjwzglj8d',
+        size: limitEventsPerPage,
+        page: page
+    });
 
-const footerBtns = document.querySelectorAll(".footer__btn");
+    try {
+        const response = await fetch(`https://app.ticketmaster.com/discovery/v2/events/?${queryParams}`);
+        return await response.json();
+    } catch (error) {
+        console.error('Error:', error);
+        return null;
+    }
+};
 
+
+renderEvents(currentPage);
+updatePagination();
