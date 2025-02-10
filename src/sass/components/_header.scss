@@ -40,7 +40,7 @@
   &__title {
     justify-content: center;
     align-items: center;
-    font-family: var(--font-family);
+    font-family: 'Montserrat';
     font-weight: 900;
     text-align: center;
     color: $main_text;
@@ -93,7 +93,7 @@
       &__menu {
         width: 270px;
         height: 40px;
-        border-radius: 30px; 
+        border-radius: 30px;
         color: $grey;
         background: $inpute;
         display: flex;
@@ -103,29 +103,36 @@
   &__dropmenu.show {
     display: block;
     opacity: 1;
-    z-index: 1; 
+    z-index: 1;
   }
   &__dropmenu {
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.3s ease;
-    width: 200px;
     height: 150px;
-    padding-top: 10px;
-    z-index: 1; 
+    padding-top: 1px;
+    z-index: 1;
+    
     &__ul {
-      width: 100%; 
+      width: 235px;
       height: 100%;
       list-style-type: none;
-      margin: 0;
+      margin-left: 15px;
       padding: 0;
+      overflow-y: scroll;
+      border-radius: 0px 0px 30px 30px;
+      &:-webkit-scrollbar-thumb{
+        background-color: $inpute;
+        width: 3px;
+      }
     }
     &__li {
-      background-color: lightslategrey;
-      padding: 10px;
+      background-color: $inpute;
     }
     &__button {
-      width: 100%; 
+      background-color: $main_text;
+      padding: 10px;
+      width: 100%;
       text-align: center;
       background-color: transparent;
       border: none;
