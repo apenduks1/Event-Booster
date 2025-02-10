@@ -68,7 +68,7 @@ buttonDropmenuCountry.addEventListener('click', function (event) {
 });
 
 document.addEventListener('click', function (event) {
-  if (!dropMenu.contains(event.target) {
+  if (!dropMenu.contains(event.target)) {
     dropMenu.style.opacity = '0';
     dropMenu.style.pointerEvents = 'none';
   }
