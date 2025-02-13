@@ -1,7 +1,6 @@
 const dropMenu = document.querySelector('.header__dropmenu');
 const buttonDropmenuCountry = document.getElementById('buttonDropmenuCountry');
 
-
 buttonDropmenuCountry.addEventListener('click', function(event) {
   event.stopPropagation();
   if (dropMenu.style.opacity === '0' || dropMenu.style.opacity === '') {
