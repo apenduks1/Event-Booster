@@ -11,6 +11,10 @@
   }
   &__div {
     position: absolute;
+    &__logo {
+      z-index: 2;
+      position: relative;
+    }
     &__svg {
       display: flex;
       box-sizing: content-box;
@@ -32,9 +36,29 @@
       }
     }
     &__blur {
+      position: absolute;
       border-radius: 100%;
+      z-index: 1;
       fill: linear-gradient(136deg, #c4c4c4 0%, rgba(196, 196, 196, 0) 100%);
       backdrop-filter: blur(30px);
+      @media (min-width: 320px) {
+        width: 214px;
+        height: 180px;
+        left: -120%;
+        top: -180%;
+      }
+      @media (min-width: 768px) {
+        width: 359px;
+        height: 302px;
+        top: -180%;
+        left: -120%;
+      }
+      @media (min-width: 1200px) {
+        width: 402px;
+        height: 477px;
+        left: -100%;
+        top: -250%;
+      }
     }
   }
   &__title {
@@ -112,7 +136,7 @@
     height: 150px;
     padding-top: 1px;
     z-index: 1;
-    
+
     &__ul {
       width: 235px;
       height: 100%;
@@ -121,7 +145,7 @@
       padding: 0;
       overflow-y: scroll;
       border-radius: 0px 0px 30px 30px;
-      &:-webkit-scrollbar-thumb{
+      &:-webkit-scrollbar-thumb {
         background-color: $inpute;
         width: 3px;
       }
