@@ -1,5 +1,6 @@
 import cardTemplate from '../template/card.hbs';
 
+
 const limitEventsPerPage = 20;
 let currentPage = 1;
 const totalPages = 29;
@@ -97,9 +98,7 @@ const getEvents = async (page) => {
     });
 
     try {
-
-        const response = await fetch(`https://app.ticketmaster.com/discovery/v2/events/?${queryParams}`);
-
+        const response = await fetch(`https://app.ticketmaster.com/discovery/v2/events/?${queryParams}`)
         return await response.json();
     } catch (error) {
         console.error('Error:', error);
