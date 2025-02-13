@@ -1,4 +1,4 @@
-import cardTemplate from '../template/card.hbs';
+
 
 const limitEventsPerPage = 20;
 let currentPage = 1;
