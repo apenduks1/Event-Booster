@@ -98,8 +98,8 @@
     &__input {
       width: 270px;
       height: 40px;
-      border-radius: 30px;
-      color: #d0d0d0;
+      border-radius: 30px; 
+      color: $grey;
       background: $inpute;
       border: none;
       display: flex;
