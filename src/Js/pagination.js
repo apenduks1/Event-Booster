@@ -97,7 +97,9 @@ const getEvents = async (page) => {
     });
 
     try {
+
         const response = await fetch(`https://app.ticketmaster.com/discovery/v2/events/?${queryParams}`);
+
         return await response.json();
     } catch (error) {
         console.error('Error:', error);

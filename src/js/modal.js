@@ -1,7 +1,13 @@
 import modalTemplate from '../templates/modal.hbs';
 
 document.addEventListener('DOMContentLoaded', function(){
+
   const openModalBtn = document.querySelector('button[data-action="open-modal"]');
+
+
+  console.log(openModalBtn);
+  
+
   const closeModalBtn = document.querySelector('.modal__close');
   const backDrop = document.querySelector('.js-backdrop');
 
