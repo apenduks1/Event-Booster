@@ -124,12 +124,6 @@
       }
     }
   }
-  &__dropmenu.show {
-    display: block;
-    opacity: 1;
-    z-index: 1;
-  }
-
   &__dropmenu {
     opacity: 0;
     pointer-events: none;
@@ -137,6 +131,14 @@
     height: 150px;
     padding-top: 1px;
     z-index: 1;
+
+    &.show {
+      display: block;
+      opacity: 1;
+      z-index: 1;
+      pointer-events: all;
+    }
+
     &__ul {
       width: 235px;
       height: 100%;
@@ -145,16 +147,18 @@
       padding: 0;
       overflow-y: scroll;
       border-radius: 0px 0px 30px 30px;
-      &:-webkit-scrollbar-thumb {
+
+      &::-webkit-scrollbar-thumb {
         background-color: $inpute;
         width: 3px;
       }
     }
+
     &__li {
       background-color: $inpute;
     }
+
     &__button {
-      background-color: $main_text;
       padding: 10px;
       width: 100%;
       text-align: center;
