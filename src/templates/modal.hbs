@@ -1,54 +1,45 @@
-  <button class="button" data-action="open-modal">Відкрити модалку</button>
-  <div class="backdrop js-backdrop">
-    <div class="modal">
-      <div class="small-photo">
-        <img src="{{smallImg}}" alt="photo">
-      </div>
-      <div class="box">
-        <div class="big-photo">
-          <img src="{{bigImg}}" alt="big-photo">
-        </div>
-        <div class="main-text">
-          <ul class="modal__info">
-            <li class="modal__list modal__information">
-              <h3 class="modal__title">INFO</h3>
-              <p class="modal__subtitle">{{info}}</p>
-            </li>
-            <li class="modal__list modal__when">
-              <h3 class="modal__title">WHEN</h3>
-              <p class="modal__subtitle">{{whenDate}}</p>
-              <p class="modal__subtitle">{{whenTime}}</p>
-            </li>
-            <li class="modal__list modal__where">
-              <h3 class="modal__title">WHERE</h3>
-              <p class="subtitle">{{whereCity}}</p>
-              <p class="subtitle">{{whereLocation}}</p>
-            </li>
-            <li class="modal__list modal__who">
-              <h3 class="modal__title">WHO</h3>
-              <p class="modal__subtitle">{{who}}</p>
-            </li>
-            <li class="modal__list">
-              <h3 class="modal__title">PRICES</h3>
-              <div class="modal__standart">
-                <img src="{{ticketImg}}" alt="ticket">
-                <p class="modal__standart--price">{{standartPrice}}</p>
-                <button class="modal__buy--ticket">BUY TICKETS</button>
-              </div>
-              <div class="modal__vip">
-                <img src="{{ticketImg}}" alt="ticket">
-                <p class="modal__vip--price">{{vipPrice}}</p>
-                <button class="modal__buy--ticket">BUY TICKETS</button>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div class="modal__load--more">
-        <button class="modal__load--more--button">MORE FROM THIS AUTHOR</button>
-      </div>
-      <div class="close modal__close">
-        <img src="{{closeImg}}" alt="close">
-      </div>
+
+<div class=''>
+
+  <div class='small-photo'>
+    <img src='{{smallImg}}' alt='photo' />
+  </div>
+  <div class='box'>
+    <div class='big-photo'>
+      <img src='{{bigImg}}' alt='big-photo' />
+    </div>
+    <div class='main-text'>
+      <ul class='modal__info'>
+        <li class='modal__list modal__information'>
+          <h3 class='modal__title'>INFO</h3>
+          <p class='modal__subtitle'>{{info}}</p>
+        </li>
+        <li class='modal__list modal__when'>
+          <h3 class='modal__title'>WHEN</h3>
+          <p class='modal__subtitle'>{{whenDate}}</p>
+          <p class='modal__subtitle'>{{whenTime}}</p>
+        </li>
+        <li class='modal__list modal__where'>
+          <h3 class='modal__title'>WHERE</h3>
+          <p class='subtitle'>{{whereCity}}</p>
+          <p class='subtitle'>{{whereLocation}}</p>
+        </li>
+        <li class='modal__list modal__who'>
+          <h3 class='modal__title'>WHO</h3>
+          <p class='modal__subtitle'>{{who}}</p>
+        </li>
+        <li class='modal__list'>
+          <h3 class='modal__title'>PRICES</h3>
+          <div class='modal__standart'>
+<!--            <img src='{{ticketImg}}' alt='ticket' />-->
+            <p class='modal__standart--price'>{{standartPrice}} STANDART UAH</p>
+            <button class='modal__buy--ticket'>BUY TICKETS</button>
+          </div>
+        </li>
+      </ul>
     </div>
   </div>
+  <div class='modal__load--more'>
+    <button class='modal__load--more--button'>MORE FROM THIS AUTHOR</button>
+  </div>
+</div>

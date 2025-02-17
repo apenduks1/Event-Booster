@@ -11,7 +11,7 @@ const paginationContainer = document.querySelector('.footer__list');
 const createPaginationItem = (number, isEllipsis = false) => {
     const li = document.createElement('li');
     li.className = 'footer__item';
-    
+
     if (isEllipsis) {
         li.innerHTML = '<span class="footer__ellipsis">...</span>';
     } else {
@@ -34,7 +34,7 @@ const createPaginationItem = (number, isEllipsis = false) => {
 
 const updatePagination = () => {
     paginationContainer.innerHTML = '';
-    
+
 
     const start = Math.max(1, currentPage - 2);
     const end = Math.min(currentPage + 2, totalPages);
@@ -50,7 +50,7 @@ const updatePagination = () => {
 
     const prevButton = document.querySelector('.footer__prev');
     const nextButton = document.querySelector('.footer__next');
-    
+
     if (prevButton) {
         prevButton.disabled = currentPage === 1;
         prevButton.onclick = async () => {
@@ -61,7 +61,7 @@ const updatePagination = () => {
             }
         };
     }
-    
+
     if (nextButton) {
         nextButton.disabled = currentPage === totalPages;
         nextButton.onclick = async () => {
@@ -81,6 +81,7 @@ const renderEvents = async (page) => {
 
     responseEvents._embedded.events.forEach((value) => {
         const event = {
+            id: value.id,
             title: value.name,
             image: value.images[0].url,
             date: value.dates.start.localDate,
@@ -92,7 +93,7 @@ const renderEvents = async (page) => {
 
 const getEvents = async (page) => {
     const queryParams = new URLSearchParams({
-        apikey: 'Pih5LiNOpgXEI3dv2AQLDYBKjwzglj8d',
+        apikey: 'Shhg30GRJqiVh4F5zt8WhjlFpM0sHYGU',
         size: limitEventsPerPage,
         page: page
     });
